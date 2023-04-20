@@ -6,13 +6,13 @@ function photographerFactory(data) {
             const { name, portrait,city,country,tagline,price } = data;
             let article = `
             <figure class="home-fig">
-                <a href="/photographe.html" class="link-photographer">
-                    <img src="assets/images/photographers-id-photos/${portrait}" alt="${name}" class="rounded-circle sq200 img-fluid mx-auto">
-                    <h2 class"class="text-center secondary">${name}</h2>
+                <a href="/photographe.html" class="link-photographer" aria-label="${name}">
+                    <img src="assets/images/photographers-id-photos/${portrait}" alt="${name}" class="rounded-circle sq200 img-fluid mx-auto" aria-label="${name}">
+                    <h2 class"class="text-center secondary" aria-label="${name}">${name}</h2>
                 </a>
-                <p class="text-center p-city primary">${city}, ${country}</p>
-                <p class="text-center p-slogan">${tagline}</p>
-                <p class="text-center p-price">${price} €/jour</p>
+                <p class="text-center p-city primary" aria-label="Location">${city}, ${country}</p>
+                <p class="text-center p-slogan" aria-label="Tagline">${tagline}</p>
+                <p class="text-center p-price" aria-label="Price">${price} €/jour</p>
             </figure>`;
             let dom = new DOMParser().parseFromString(article,"text/html");
             return(dom.body.firstChild);
@@ -167,7 +167,7 @@ function photographerFactory(data) {
 
             let imgElement;
             if(video){// permet de switcher entre une vidéo et une photo
-                imgElement = `<video tabindex=0 src="assets/images/${foldername}/${video}" alt="${title}" aria-label="${title}" class="media"></video>`;
+                imgElement = `<video tabindex=0 src="assets/images/${foldername}/${video}" alt="${title}" aria-label="${title}" class="media" controls autoplay></video>`;
             }
             else{
                 imgElement = `<img src="assets/images/${foldername}/${image}" alt="${title}"  aria-label="${title}"     class="img-fluid media" alt="">`;
